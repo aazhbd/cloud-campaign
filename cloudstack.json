@@ -10,21 +10,22 @@
                         "Fn::Join": [
                             "\n",
                             [
-                                "'use strict';",
-                                "",
-                                "// Greeter Lambda",
-                                "exports.handler = (event, context, callback) => {",
-                                "  console.log('Event:', JSON.stringify(event));",
-                                "  const name = event.name || 'World';",
-                                "  const response = {greeting: `Hello, ${name}!`};",
-                                "  callback(null, response);",
-                                "};"
+				"import smtplib, ssl",
+				"",
+				"message = '''Subject: This is the campaign message",
+				"The body of the campaign message.'''",
+				"context = ssl.create_default_context()",
+				"",
+				"with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as server:",
+				"    server.login('aazhbd@hotmail.com', 'asdfasdf')",
+				"    server.sendmail('aazhbd@hotmail.com', 'syedatasneemrumy@gmail.com', message)",
+                                ""
                             ]
                         ]
                     }
                 },
-                "Description": "Send greetings",
-                "FunctionName": "GreetingLambda",
+                "Description": "Send email",
+                "FunctionName": "sendingCampaignEmail",
                 "Handler": "index.handler",
                 "Role": {
                     "Fn::GetAtt": [
